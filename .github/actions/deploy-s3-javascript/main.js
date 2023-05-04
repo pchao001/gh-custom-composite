@@ -12,6 +12,9 @@ function run() {
     //AWS_ACCESS_KEY_ID=AKIAT3PD7Y5GZA6DBA6K
     exec.exec(`aws s3 sync ${distFolder} ${s3Uri} --region ${bucketRegion}`)  
 
-    core.notice('Hello from my javascript custom action.')
+    const websiteUrl= `http://${bucket}.s3-website-${bucketRegion}.amazonaws.com`;
+    core.setOutput('website-url', websiteUrl);
+
+    //core.notice('Hello from my javascript custom action.')
 }
 run();
